@@ -8,6 +8,8 @@
 [![R-CMD-check](https://github.com/BjarkeHautop/solvetruncated/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/BjarkeHautop/solvetruncated/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
+# Overview
+
 The goal of solvetruncated is to solve for parameters of truncated
 distributions given desired mean and value of CDF at a point. It does
 this by numerical optimization.
