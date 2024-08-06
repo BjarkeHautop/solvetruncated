@@ -20,25 +20,6 @@
 solve_truncated_normal <- function(desired_mean, x_value, desired_prob, a = 0,
                                    b = Inf, initial_guess=c(desired_mean, 1),
                                    verbose=FALSE) {
-  "
-  This function solves for the parameters (mean and standard deviation) of a truncated normal distribution
-
-  such that the distribution aligns with a given desired mean and the cumulative probability at a specific value.
-
-  Args:
-  desired_mean (numeric): The desired mean E[X] of the truncated normal distribution.
-  desired_prob (numeric): The desired cumulative probability P(X <= x_value) of the truncated normal distribution.
-  x_value (numeric): The value x for which the cumulative probability is specified.
-  a (numeric, optional): The lower bound of the truncation interval. Default is 0.
-  b (numeric, optional): The upper bound of the truncation interval. Default is Inf.
-  Initial_guess: The initial guess for the parameters used for optimizing. Default
-  is mean being the desired mean and sd being 1.
-  maxit: The maximum number of iterations allowed for optim. See also ?optim.
-
-  Returns:
-  list: A list containing the optimal mean (mu) and standard deviation (sigma) of the truncated normal distribution.
-  "
-
   # Check for logical consistency and edge cases
   if (a >= b) {
     stop("Error: Lower bound 'a' must be less than upper bound 'b'.")
@@ -73,7 +54,7 @@ solve_truncated_normal <- function(desired_mean, x_value, desired_prob, a = 0,
     prob_trunc <- (pnorm(xi) - pnorm(alpha)) / Z
 
     # Calculate the sum of squared differences
-    error <- (mean_trunc - desired_mean)^2 + (prob_trunc - desired_prob)^2
+    error <- abs(mean_trunc - desired_mean) + abs(prob_trunc - desired_prob)
 
     return(error)
   }
