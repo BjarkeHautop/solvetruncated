@@ -9,10 +9,10 @@
 #' @param verbose Prints output of solver if TRUE.
 #'
 #' @return Returns a list of the parameters found.
+#' @import stats
 #' @export
-#'
 #' @examples
-#' ## Example use for desired mean 2 and P(X<=1)=0.3
+#' ## Example use for desired mean 2 and P(X<=1)=0.3 with default truncation
 #' solve_truncated_normal(2, 1, 0.3)
 #'
 #' ## Print output of optim by setting verbose=TRUE
