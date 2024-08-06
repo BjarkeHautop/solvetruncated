@@ -27,8 +27,8 @@ devtools::install_github("BjarkeHautop/solvetruncated")
 ## Example
 
 Here is an example where we wish to solve for the parameters
-$(\mu, \sigma^2)$ of
-$$X \sim \text{TruncNormal}(\mu, \, \sigma^2, \, a=0, \, b=\infty),$$
+$(\mu, \sigma)$ of
+$$X \sim \text{TruncNormal}(\mu, \, \sigma, \, a=0, \, b=\infty),$$
 where we wish $E[X]=1.5$ and $P(X\leq 2)=0.8$.
 
 ``` r
@@ -41,4 +41,4 @@ solve_truncated_normal(desired_mean=1.5, x_value=2, desired_prob=0.8, a=0, b=Inf
 #> [1] 0.6044566
 ```
 
-which gives that the parameters should be $(\mu, \sigma^2)$.
+which gives that the parameters should be $(\mu=1.5, \sigma=0.6)$.
