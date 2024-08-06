@@ -30,8 +30,8 @@ devtools::install_github("BjarkeHautop/solvetruncated")
 
 Here is an example where we wish to solve for the parameters
 $(\mu, \sigma)$ of
-$$X \sim \text{TruncNormal}(\mu, \, \sigma, \, a=0, \, b=\infty),$$
-where we wish $E[X]=1.5$ and $P(X\leq 2)=0.8$.
+$$X \sim \text{TruncNormal}(\mu, \sigma, a=0, b=\infty),$$ where we wish
+$E[X]=1.5$ and $P(X\leq 2)=0.8$.
 
 ``` r
 library(solvetruncated)
