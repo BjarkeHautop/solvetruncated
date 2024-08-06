@@ -1,10 +1,10 @@
 Package: solvetruncated
-Title: Solves for Mean and Standard Deviation of a Truncated normal
+Title: Solves For Pparameters Of A Truncated Distribution
 Version: 0.0.0.9000
 Authors@R: 
     person("Bjarke", "Hautop", , "bjarke.hautop@gmail.com", role = c("aut", "cre"))
 Description: Given a desired mean and desired value of the CDF at a point it 
-    numerically solves for the parameters of a truncated normal.
+    numerically solves for the parameters of truncated distributions.
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
