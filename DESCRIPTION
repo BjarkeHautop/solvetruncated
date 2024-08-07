@@ -1,5 +1,5 @@
 Package: solvetruncated
-Title: Solves For Parameters Of A Truncated Distribution
+Title: Solves for Parameters of a Truncated Distribution
 Version: 0.0.0.9000
 Authors@R: 
     person("Bjarke", "Hautop", , "bjarke.hautop@gmail.com", role = c("aut", "cre"))
