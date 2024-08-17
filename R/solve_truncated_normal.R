@@ -16,10 +16,10 @@
 #' solve_truncated_normal(2, 1, 0.3)
 #'
 #' ## Print output of optim by setting verbose=TRUE
-#' solve_truncated_normal(2, 1, 0.3, verbose=TRUE)
+#' solve_truncated_normal(2, 1, 0.3, verbose = TRUE)
 solve_truncated_normal <- function(desired_mean, x_value, desired_prob, a = 0,
-                                   b = Inf, initial_guess=c(desired_mean, 1),
-                                   verbose=FALSE) {
+                                   b = Inf, initial_guess = c(desired_mean, 1),
+                                   verbose = FALSE) {
   # Check for logical consistency and edge cases
   if (a >= b) {
     stop("Error: Lower bound 'a' must be less than upper bound 'b'.")

@@ -40,5 +40,5 @@ Solve for parameters of a truncated normal distribution
 solve_truncated_normal(2, 1, 0.3)
 
 ## Print output of optim by setting verbose=TRUE
-solve_truncated_normal(2, 1, 0.3, verbose=TRUE)
+solve_truncated_normal(2, 1, 0.3, verbose = TRUE)
 }
