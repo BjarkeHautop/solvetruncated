@@ -1,18 +1,25 @@
 # Sample function from the truncated exponential distribution
-sample_truncated_exponential <- function(n, lambda, a = 0, b = Inf) {
-  samples <- numeric(n)
-  count <- 0
+sample_truncated_exponential <- function(n, lambda, a = 0, b = Inf,
+                                         oversample_factor = 2) {
+  # Initial estimate of how many samples to generate
+  num_samples_needed <- n
+  samples <- numeric(0)
 
-  while (count < n) {
-    x <- rexp(1, rate = lambda)
+  while (length(samples) < n) {
+    # Generate more samples than needed (oversampling)
+    x <- rexp(num_samples_needed * oversample_factor, rate = lambda)
 
-    if (x >= a && x <= b) {
-      count <- count + 1
-      samples[count] <- x
-    }
+    # Filter samples that fall within the truncation range
+    x <- x[x >= a & x <= b]
+
+    # Collect the accepted samples
+    samples <- c(samples, x)
+
+    # Update the number of samples needed
+    num_samples_needed <- n - length(samples)
   }
 
-  return(samples)
+  return(samples[1:n])
 }
 
 # Test for the truncated exponential solver
@@ -33,5 +40,5 @@ test_that("Truncated exponential mean matches desired mean", {
   sampled_mean <- mean(samples)
 
   # Check if the sampled mean is close to the desired mean
-  expect_equal(sampled_mean, desired_mean, tolerance = 0.01)  # Adjust tolerance as needed
+  expect_equal(sampled_mean, desired_mean, tolerance = 0.01)
 })

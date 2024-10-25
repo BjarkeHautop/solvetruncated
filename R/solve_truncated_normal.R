@@ -31,7 +31,7 @@ solve_truncated_normal <- function(desired_mean,
   }
 
   result <- optim(initial_guess, objective_function)
-  handle_optimization_result(result, verbose)
+  handle_optim_result_normal(result, verbose)
 }
 
 # Validates the inputs to the main function
@@ -70,7 +70,7 @@ calculate_error <- function(params, x_value, desired_mean, desired_prob, a, b) {
 }
 
 # Handles the optimization result and prints if needed
-handle_optimization_result <- function(result, verbose) {
+handle_optim_result_normal <- function(result, verbose) {
   if (result$convergence != 0) {
     warning("Optimization did not converge.")
   }

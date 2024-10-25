@@ -3,15 +3,16 @@
 #' @param desired_mean The desired mean of the truncated exponential distribution.
 #' @param a Lower value of the truncation. Default is \eqn{0}.
 #' @param b Upper value of the truncation. Default is \eqn{\infty}.
-#' @param initial_guess Initial guess for the rate parameter. Default is \eqn{1 / (desired_mean - a)}.
+#' @param initial_guess Initial guess for the rate parameter. Default is \eqn{1 / (desired\_mean - a)}.
 #' @param verbose Prints output of solver if TRUE.
 #'
 #' @return Returns the rate parameter found.
 #' @import stats
 #' @export
 #' @examples
-#' ## Example use for desired mean 1
-#' solve_truncated_exponential(1)
+#' ## Example use for desired mean 3 with lower truncation at 1 and upper
+#' ## truncation at 100
+#' solve_truncated_exponential(1, 3, 100)
 #'
 #' ## Print output of optim by setting verbose=TRUE
 #' solve_truncated_exponential(1, verbose = TRUE)
@@ -32,12 +33,12 @@ solve_truncated_exponential <- function(desired_mean,
     lambda <- 1 / (desired_mean - a)
     return(lambda)
   } else {
-    # Use Brent's method for constrained optimization (lambda > 0)
+    # Use Brent's method optimization
     result <- optim(initial_guess, objective_function, method = "Brent",
-                    lower = 0, upper = max(1000, 1/desired_mean))
+                    lower = 0, upper = max(1000, 1 / desired_mean))
   }
 
-  handle_optimization_result_exp(result, verbose)
+  handle_optim_result_exp(result, verbose)
 }
 
 # Validates the inputs to the main function
@@ -57,7 +58,8 @@ calculate_error_exp <- function(lambda, desired_mean, a, b) {
     mean_trunc <- a + (1 / lambda)
   } else {
     # General case
-    mean_trunc <- (1 / lambda) + (a * exp(-lambda * a) - b * exp(-lambda * b)) / (exp(-lambda * a) - exp(-lambda * b))
+    mean_trunc <- (1 / lambda) + (a * exp(-lambda * a) - b * exp(-lambda * b)) /
+      (exp(-lambda * a) - exp(-lambda * b))
   }
 
   # Return the absolute error between calculated mean and desired mean
@@ -65,7 +67,7 @@ calculate_error_exp <- function(lambda, desired_mean, a, b) {
 }
 
 # Handles the optimization result and prints if needed
-handle_optimization_result_exp <- function(result, verbose) {
+handle_optim_result_exp <- function(result, verbose) {
   if (result$convergence != 0) {
     warning("Optimization did not converge.")
   }

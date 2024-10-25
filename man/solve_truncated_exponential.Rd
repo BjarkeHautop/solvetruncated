@@ -19,7 +19,7 @@ solve_truncated_exponential(
 
 \item{b}{Upper value of the truncation. Default is \eqn{\infty}.}
 
-\item{initial_guess}{Initial guess for the rate parameter. Default is \eqn{1 / (desired_mean - a)}.}
+\item{initial_guess}{Initial guess for the rate parameter. Default is \eqn{1 / (desired\_mean - a)}.}
 
 \item{verbose}{Prints output of solver if TRUE.}
 }
@@ -30,8 +30,9 @@ Returns the rate parameter found.
 Solve for the rate parameter of a truncated exponential distribution
 }
 \examples{
-## Example use for desired mean 1
-solve_truncated_exponential(1)
+## Example use for desired mean 3 with lower truncation at 1 and upper
+## truncation at 100
+solve_truncated_exponential(1, 3, 100)
 
 ## Print output of optim by setting verbose=TRUE
 solve_truncated_exponential(1, verbose = TRUE)
