@@ -6,7 +6,7 @@ sample_truncated_exponential <- function(n, lambda, a = 0, b = Inf) {
   while (count < n) {
     x <- rexp(1, rate = lambda)
 
-    if (x >= a && (is.infinite(b) || x <= b)) {
+    if (x >= a && x <= b) {
       count <- count + 1
       samples[count] <- x
     }

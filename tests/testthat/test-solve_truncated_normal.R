@@ -6,7 +6,7 @@ sample_truncated_normal <- function(n, mu, sigma, a = 0, b = Inf) {
     x <- rnorm(1, mean = mu, sd = sigma)
 
     # Accept-reject condition
-    if (x >= a && (is.infinite(b) || x <= b)) {
+    if (x >= a && x <= b) {
       count <- count + 1
       samples[count] <- x
     }
