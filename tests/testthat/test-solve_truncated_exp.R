@@ -17,6 +17,7 @@ sample_truncated_exponential <- function(n, lambda, a = 0, b = Inf) {
 
 # Test for the truncated exponential solver
 test_that("Truncated exponential mean matches desired mean", {
+  set.seed(1405)
   desired_mean <- 3
   a <- 1
   b <- 100

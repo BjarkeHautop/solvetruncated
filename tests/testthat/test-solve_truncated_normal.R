@@ -17,6 +17,7 @@ sample_truncated_normal <- function(n, mu, sigma, a = 0, b = Inf) {
 
 # Test for the truncated normal solver
 test_that("Truncated normal mean and CDF matches desired values", {
+  set.seed(1405)
   desired_mean <- 2
   x_value <- 1
   desired_prob <- 0.3
